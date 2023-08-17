@@ -25,7 +25,7 @@ function compose_email(email, isReply) {
     if (isReply) {
         document.querySelector('#compose-recipients').value = `${email['recipients'].join(', ')}`
         document.querySelector('#compose-subject').value = email['subject'].startsWith('Re: ') ? email['subject'] : `Re: ${email['subject']}`;
-        document.querySelector('#compose-body').value = `--- Original Message ---\nOn ${email['timestamp']}, ${email['sender']} wrote:\n${email['body']}`;
+        document.querySelector('#compose-body').value = `\n--- Original Message ---\nOn ${email['timestamp']}, ${email['sender']} wrote:\n${email['body']}`;
     } 
 
     // Define the event handler function
@@ -110,7 +110,7 @@ function display_emails(contents, mailbox) {
             <span class="date-time">${contents['timestamp']}</span>
             `;
 
-    } else if (contents['recipients'].includes(my_email) && contents['recipients'].length === 1){
+    } else if (contents['recipients'].includes(my_email) && contents['recipients'].length === 1 && contents['sender'] === my_email){
         // The received emails from me
         email.innerHTML = `
             <span><strong>me</strong> | ${contents['subject']}</span>

@@ -10,16 +10,23 @@ document.addEventListener('DOMContentLoaded', function() {
     load_mailbox('inbox');
 });
 
-function compose_email() {
+function compose_email(email, isReply) {
     // Show compose view and hide other views
     document.querySelector('#emails-view').style.display = 'none';
     document.querySelector('#view-singular-email').style.display = 'none';
     document.querySelector('#compose-view').style.display = 'block';
-
+ 
     // Clear out composition fields
     document.querySelector('#compose-recipients').value = '';
     document.querySelector('#compose-subject').value = '';
     document.querySelector('#compose-body').value = '';
+
+    // Check to see if it's a reply
+    if (isReply) {
+        document.querySelector('#compose-recipients').value = `${email['recipients'].join(', ')}`
+        document.querySelector('#compose-subject').value = email['subject'].startsWith('Re: ') ? email['subject'] : `Re: ${email['subject']}`;
+        document.querySelector('#compose-body').value = `--- Original Message ---\nOn ${email['timestamp']}, ${email['sender']} wrote:\n${email['body']}`;
+    } 
 
     // Define the event handler function
     function handleSubmit(event) {
@@ -66,7 +73,7 @@ function load_mailbox(mailbox) {
     
 
     // API call to /emails/<mailbox>
-        // For each of the emails 
+    // For each of the emails 
     fetch(`/emails/${mailbox}`)
         .then(response => response.json())
         .then(emails => {
@@ -201,6 +208,9 @@ function view_singular_email(email_content, mailbox) {
     // Buttons common to all cases
     const replyButton = display_button('Reply', 'primary');
     document.querySelector('#action_buttons_box').appendChild(replyButton);
+    replyButton.addEventListener('click', () => {
+        compose_email(email_content, true);
+    });
 
     // Check to see which mailbox this is being viewed in 
     switch (mailbox) {

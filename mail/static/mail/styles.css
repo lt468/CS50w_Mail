@@ -1,3 +1,73 @@
+hr {
+    border: 1px solid gray;
+}
+
+#hr-padded {
+    padding: 10px;
+}
+
 textarea {
     min-height: 400px;
 }
+
+/* Base class */
+.email-base {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid;
+    border-color: black;
+    margin: 10px;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Specific modifications */
+.email-read {
+    background-color: lightgray;
+}
+
+.email {
+    background-color: white;
+}
+
+.date-time {
+    font-size: 14px;
+    color: gray;
+}
+
+#view-singular-email {
+    height: auto;
+    border: 1px solid;
+    border-color: black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#sttf {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#action_buttons_box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.action_button {
+    margin-right: 10px;
+}
+
+#body {
+    margin-top: 20px ;
+    padding: 10px;
+}
+

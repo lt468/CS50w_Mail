@@ -4,7 +4,7 @@
 
 This is my submission to CS50w's Project 3: Mail
 
-<!--[![Project Demo Video](https://img.youtube.com/vi/G9PqV6hWosw/0.jpg)](https://youtu.be/G9PqV6hWosw)-->
+[![Project Demo Video](https://img.youtube.com/vi/8nFoQNGBMqM/0.jpg)](https://youtu.be/8nFoQNGBMqM)
 
 For information about the course, check out the [official course page](https://cs50.harvard.edu/web/2020/).
 

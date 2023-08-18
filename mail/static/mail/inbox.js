@@ -23,7 +23,7 @@ function compose_email(email, isReply) {
 
     // Check to see if it's a reply
     if (isReply) {
-        document.querySelector('#compose-recipients').value = `${email['recipients'].join(', ')}`
+        document.querySelector('#compose-recipients').value = `${email['sender']}`
         document.querySelector('#compose-subject').value = email['subject'].startsWith('Re: ') ? email['subject'] : `Re: ${email['subject']}`;
         document.querySelector('#compose-body').value = `\n--- Original Message ---\nOn ${email['timestamp']}, ${email['sender']} wrote:\n${email['body']}`;
     } 
